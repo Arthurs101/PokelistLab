@@ -29,7 +29,10 @@ class PokemonListAdapter(private var pokemonList: List<PokemonPi>  ) : RecyclerV
     override fun onBindViewHolder(holder: PokemonListHolder, position: Int) { //asignarle al elemento sus propiedades
         val item = pokemonList.get(position)
         holder.name.text = item.name;
-        Picasso.get().load(item.details.imageUrlFront).placeholder(R.drawable.whoisthatpokemon).error(R.drawable.whoisthatpokemon).into(holder.foto)
+        Picasso.get().load(item.getcover()).resize(80,80)
+            .placeholder(R.drawable.whoisthatpokemon).resize(80,80).error(R.drawable.whoisthatpokemon)
+            .resize(80,80).noFade()
+            .into(holder.foto)
         holder.itemView.setOnClickListener {
             val action =
                 MainFragmentDirections.actionMainFragmentToDetailFragment(item.details.imageUrlShinnyFront,item.details.imageUrlShinnyBack,item.details.imageUrlFront,item.details.imageUrlBack)

@@ -15,7 +15,6 @@ import gt.uvg.pokelist.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
     val arg: DetailFragmentArgs by navArgs()
-    private lateinit var recyclerView: RecyclerView //recycler view
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {

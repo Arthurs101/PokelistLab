@@ -33,7 +33,9 @@ data class PokemonPi(
         }
 
     })
-
+    fun getcover(): String {
+        return details.imageUrlFront
+    }
 }
 
 data class PokemonResponse (

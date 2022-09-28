@@ -4,4 +4,8 @@
     <string name="detail_back_title">Back</string>
     <string name="detail_front_shinny_title">Front Shinny</string>
     <string name="detail_back_shinny_title">Back Shinny</string>
+    <string name="wecome_header">Bienvenindo a \n la Librería de pokemones</string>
+    <string name="welcome_hint">Ingresa La cantidad de Pokemons</string>
+    <string name="welcome_button">Obtener</string>
+    <string name="BASEURL">pokemon?limit=100</string>
 </resources>
