@@ -1,15 +1,20 @@
 package gt.uvg.pokelist.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import gt.uvg.pokelist.R
 import gt.uvg.pokelist.databinding.ItemPokemonViewBinding
-import gt.uvg.pokelist.model.Pokemon
+import kotlin.math.log
 
-class PokemonListAdapter(private val pokemonList: List<Pokemon>) : RecyclerView.Adapter<PokemonListAdapter.PokemonListHolder>() {
+
+class PokemonListAdapter(private var pokemonList: List<PokemonPi>  ) : RecyclerView.Adapter<PokemonListAdapter.PokemonListHolder>() {
 
     inner class PokemonListHolder(val binding: ItemPokemonViewBinding) : RecyclerView.ViewHolder(binding.root){ //subclase de pokemon para el binding
         var name = binding.pokemonName ;
@@ -24,10 +29,10 @@ class PokemonListAdapter(private val pokemonList: List<Pokemon>) : RecyclerView.
     override fun onBindViewHolder(holder: PokemonListHolder, position: Int) { //asignarle al elemento sus propiedades
         val item = pokemonList.get(position)
         holder.name.text = item.name;
-        Picasso.get().load(item.imageUrlFront).into(holder.foto)
+        Picasso.get().load(item.details.imageUrlFront).placeholder(R.drawable.whoisthatpokemon).error(R.drawable.whoisthatpokemon).into(holder.foto)
         holder.itemView.setOnClickListener {
             val action =
-                MainFragmentDirections.actionMainFragmentToDetailFragment(pokemonList.get(position).id)
+                MainFragmentDirections.actionMainFragmentToDetailFragment(item.details.imageUrlShinnyFront,item.details.imageUrlShinnyBack,item.details.imageUrlFront,item.details.imageUrlBack)
             holder.binding.root.findNavController()
                 .navigate(action)  //usar la vista fuente del holder para nacegar hacia el fragmento de detalles
         }
@@ -37,6 +42,7 @@ class PokemonListAdapter(private val pokemonList: List<Pokemon>) : RecyclerView.
         // TODO
         return pokemonList.size
     }
+
 
 
 }

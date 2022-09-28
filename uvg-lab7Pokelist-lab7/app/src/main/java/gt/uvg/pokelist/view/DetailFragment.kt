@@ -9,8 +9,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import gt.uvg.pokelist.R
 import gt.uvg.pokelist.databinding.FragmentDetailBinding
-import gt.uvg.pokelist.model.Pokemon
+
 
 class DetailFragment : Fragment() {
     val arg: DetailFragmentArgs by navArgs()
@@ -29,11 +30,14 @@ class DetailFragment : Fragment() {
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //colocar todas las imágenes en las imageview
-        val Pokemoninfo = Pokemon (arg.pokemonId, "unknown") //obtener el pokemon pasado en el argumento
-        Picasso.get().load(Pokemoninfo.imageUrlFront).into(binding.imageView2)
-        Picasso.get().load(Pokemoninfo.imageUrlBack).into(binding.imageView3)
-        Picasso.get().load(Pokemoninfo.imageUrlShinnyBack).into(binding.imageView5)
-        Picasso.get().load(Pokemoninfo.imageUrlShinnyFront).into(binding.imageView4)
+
+        Picasso.get().load(arg.front).error(R.drawable.whoisthatpokemon).into(binding.imageView2)
+        Picasso.get().load(arg.back).error(R.drawable.whoisthatpokemon).into(binding.imageView3)
+        Picasso.get().load(arg.backShiny).error(R.drawable.whoisthatpokemon).into(binding.imageView5)
+        Picasso.get().load(arg.frontShiny).error(R.drawable.whoisthatpokemon).into(binding.imageView4)
+        binding.progressBar2.visibility = View.GONE
+        binding.DertailLayout.visibility = View.VISIBLE
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

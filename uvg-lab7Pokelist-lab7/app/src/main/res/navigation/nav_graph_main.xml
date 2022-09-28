@@ -20,7 +20,16 @@
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
-            android:name="pokemonId"
-            app:argType="integer" />
+            android:name="FrontShiny"
+            app:argType="string" />
+        <argument
+            android:name="BackShiny"
+            app:argType="string" />
+        <argument
+            android:name="Front"
+            app:argType="string" />
+        <argument
+            android:name="Back"
+            app:argType="string" />
     </fragment>
 </navigation>
